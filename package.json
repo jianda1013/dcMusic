@@ -1,0 +1,29 @@
+{
+  "name": "dcmusic",
+  "version": "1.0.0",
+  "description": "discord music bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jianda1013/dcMusic.git"
+  },
+  "author": "jianda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jianda1013/dcMusic/issues"
+  },
+  "homepage": "https://github.com/jianda1013/dcMusic#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.5.1",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^4.2.7",
+    "fluent-ffmpeg": "^2.1.2",
+    "nodemon": "^2.0.6",
+    "ytdl-core": "^4.3.1"
+  }
+}
