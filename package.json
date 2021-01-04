@@ -4,8 +4,8 @@
   "description": "discord music bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/index.js"
+    "test": "nodemon ./src/index.js",
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,10 @@
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^4.2.7",
     "fluent-ffmpeg": "^2.1.2",
+    "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
+    "sequelize": "^6.3.5",
+    "yt-search": "^2.5.1",
     "ytdl-core": "^4.3.1"
   }
 }

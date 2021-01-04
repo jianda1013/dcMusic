@@ -1,1 +1,7 @@
 export DC_TOKEN=your_token
+export DB_NAME="discord"
+export DB_PORT="3306"
+export DB_HOST="localhost"
+export DB_USER="root"
+export DB_PASSWD=""
+export DB_TYPE="mysql"

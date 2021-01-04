@@ -2,3 +2,4 @@ node_modules
 .DS_STORES
 .env
 package-lock.json
+historylog

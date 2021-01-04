@@ -1,18 +1,26 @@
 const ytdl = require('ytdl-core');
 const playMusic = require('./playMusic');
+const yts = require( 'yt-search' );
 
 module.exports = {
     async AddMusic(message, channel_setting) {
-        const args = message.content.split(" ");
+        const args = message.content.substring(6);
+        let song;
         try {
-            songInfo = await ytdl.getInfo(args[1])
+            const songInfo = await ytdl.getInfo(args);
+            song = {
+                title: songInfo.videoDetails.title,
+                url: songInfo.videoDetails.video_url,
+                player: message.author.username
+            };
         } catch {
-            return message.channel.send('給個正常的yt url啦乾')
+            const songInfo = (await yts(args)).videos[0];
+            song = {
+                title: songInfo.title,
+                url: songInfo.url,
+                player: message.author.username
+            }
         }
-        var song = {
-            title: songInfo.videoDetails.title,
-            url: songInfo.videoDetails.video_url,
-        };
         channel_setting.songs.push(song);
         if(channel_setting.running == 0){
             channel_setting.running = 1;
