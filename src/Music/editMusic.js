@@ -21,7 +21,7 @@ module.exports = {
             try { channel_setting.connection.dispatcher.end(); }
             catch (err) { console.log(err) }
         } else {
-            const index = parseInt(args[1]);
+            let index = parseInt(args[1]);
             if (index == NaN) {
                 return message.channel.send('請輸入數字');
             }

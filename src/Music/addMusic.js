@@ -1,10 +1,15 @@
 const ytdl = require('ytdl-core');
 const playMusic = require('./playMusic');
-const yts = require( 'yt-search' );
+const yts = require('yt-search');
+const PlaylistSummary = require('youtube-playlist-summary');
 
 module.exports = {
     async AddMusic(message, channel_setting) {
         const args = message.content.substring(6);
+        if (args.indexOf("?list=") > -1 || args.indexOf("&list=") > -1) {
+            this.addMusicList(args.slice(args.indexOf("&list=") + 6), channel_setting, message.author.username);
+            return;
+        }
         let song;
         try {
             const songInfo = await ytdl.getInfo(args);
@@ -22,21 +27,29 @@ module.exports = {
             }
         }
         channel_setting.songs.push(song);
-        if(channel_setting.running == 0){
-            channel_setting.running = 1;
-            channel_setting.textChannel = message.channel;
-            channel_setting.voiceChannel = message.member.voice.channel;
-            try {
-                var connection = await channel_setting.voiceChannel.join();
-                channel_setting.connection = connection;
-                playMusic.playMusic(channel_setting);
-            }catch(err){
-                channel_setting.running = 0;
+        playMusic.playFromStop(channel_setting);
+        return;
+    },
+
+    async addMusicList(message, channel_setting, username) {
+        console.log(message);
+        const ps = new PlaylistSummary({ GOOGLE_API_KEY: process.env.GOOGLE_API_KEY, PLAYLIST_ITEM_KEY: ['title', 'videoUrl'] });
+        ps.getPlaylistItems(message)
+            .then(result => {
+                const len = result.items.length;
+                for (let i = 0; i < len; i++) {
+                    console.log(result.items[i]);
+                    channel_setting.songs.push({
+                        title: result.items[i].title,
+                        url: result.items[i].videoUrl,
+                        player: username
+                    })
+                }
+            })
+            .catch(err => {
                 console.log(err);
-                return;
-            }
-        }else{
-            return message.channel.send(`${song.title} 加入播放清單`)
-        }
+            })
+        playMusic.playFromStop(channel_setting);
+        return;
     }
 }

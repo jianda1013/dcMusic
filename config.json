@@ -4,5 +4,7 @@
     "voiceChannel": null,
     "connection": null,
     "songs": [],
-    "volume": 5
+    "volume": 5,
+    "continue": 1,
+    "playingNow": 0
 }
