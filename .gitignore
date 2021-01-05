@@ -1,4 +1,5 @@
 node_modules
+playlist
 .DS_STORES
 .env
 package-lock.json

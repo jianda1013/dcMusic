@@ -3,7 +3,7 @@ const ytdl = require('ytdl-core');
 
 module.exports = {
     async playFromStop(channel_setting) {
-        if (channel_setting.running === 0) {
+        if (channel_setting.songs && channel_setting.running === 0) {
             channel_setting.running = 1;
             try {
                 var connection = await channel_setting.voiceChannel.join();

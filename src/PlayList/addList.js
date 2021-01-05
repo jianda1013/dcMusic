@@ -13,21 +13,14 @@ module.exports = {
             list_id = 1;
             music = args[1];
         } else {
-            for (let i = 1; i < len - 1; i++) {
-                music += (args[i] + " ");
-            }
-            list_id = parseInt(args[len-1]);
-            if(isNaN(list_id)){
+            for (let i = 1; i < len - 1; i++) { music += (args[i] + " "); }
+            list_id = parseInt(args[len - 1]);
+            if (isNaN(list_id)) {
                 list_id = 1;
-                music += args[len-1];
+                music += args[len - 1];
             }
-            
         }
-        const check = await DB.playList.count({
-            where: {
-                id: list_id
-            }
-        })
+        const check = await DB.playList.count({ where: { id: list_id } })
         if (check != 1) { return channel_setting.textChannel.send(`未找到${list_id}號歌單`); }
         let title, url;
         try {
@@ -58,7 +51,7 @@ module.exports = {
             list_id = 1;
         } else {
             list_id = parseInt(args[1]);
-            if(isNaN(list_id)){
+            if (isNaN(list_id)) {
                 list_id = 1;
             }
         }

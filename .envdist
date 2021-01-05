@@ -1,4 +1,5 @@
 export DC_TOKEN=your_token
+export GOOGLE_API_KEY=your api key
 export DB_NAME="discord"
 export DB_PORT="3306"
 export DB_HOST="localhost"
