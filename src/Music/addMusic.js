@@ -7,6 +7,7 @@ const fs = require('fs');
 module.exports = {
     async add(message, channel_setting) {
         //check if is 
+        if(message.content.length < 6){ playMusic.play(channel_setting); return; }
         const regex = /^(?:https?:\/\/)?(?:(?:www\.)?youtube.com\/watch\?v=|youtu.be\/)(\w+)/;
         const args = message.content.substring(6);
         if (args.match(regex)) {

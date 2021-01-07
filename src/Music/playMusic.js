@@ -57,7 +57,7 @@ module.exports = {
                     this.playMusic(channel_setting);
                 })
                 .on('error', error => console.log(error));
-            dispatcher.setVolumeLogarithmic(channel_setting.volume / 5);
+            dispatcher.setVolumeLogarithmic(1);
         }
     }
 }

@@ -34,9 +34,9 @@ client.on('message', async message => {
 
     if (message.content === '!help') { usage.instruct(message); }
     else if (message.content.startsWith('!help ')) { usage.help(message); }
-    else if (message.content.startsWith('!play')) { Music.addMusic(message, setting); }
+    else if (message.content.startsWith('!play')) { Music.add(message, setting); }
     else if (message.content.startsWith('!skip')) { Music.skipMusic(message, setting); }
-    else if (message.content === '!stop') { Music.stopMusic(message, setting); }
+    else if (message.content === '!stop') { Music.stopMusic(setting); }
     else if (message.content === '!list') { Music.listMusic(message, setting); }
 });
 
