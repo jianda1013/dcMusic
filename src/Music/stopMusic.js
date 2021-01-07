@@ -1,10 +1,9 @@
 module.exports = {
-    async killAll(channel_setting) {
+    async stop(channel_setting) {
         if (channel_setting.voiceChannel) {
             channel_setting.voiceChannel.leave();
         }
         channel_setting.running = 0;
-        channel_setting.songs = [];
         return;
     },
 
@@ -12,9 +11,6 @@ module.exports = {
 
         if (channel_setting.running == 0) {
             return message.channel.send('播放器尚未啟動');
-        }
-        if (message.member.voice.channel != channel_setting.voiceChannel) {
-            return message.channel.send('你不在播放頻道裡面喔');
         }
         const args = message.content.split(" ");
         if (args.length == 1) {
@@ -35,15 +31,5 @@ module.exports = {
                 channel_setting.songs.splice(index, 1);
             }
         }
-    },
-
-    async stopMusic(message, channel_setting) {
-        if (channel_setting.running == 0) {
-            return message.channel.send('播放器尚未啟動')
-        }
-        if (message.member.voice.channel != channel_setting.voiceChannel) {
-            return message.channel.send('你不在播放頻道裡面喔');
-        }
-        this.killAll(channel_setting);
     }
 }
