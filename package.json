@@ -18,13 +18,12 @@
   },
   "homepage": "https://github.com/jianda1013/dcMusic#readme",
   "dependencies": {
+    "ffmpeg-static": "^4.2.7",
     "@discordjs/opus": "^0.3.3",
     "axios": "^0.21.1",
     "discord.js": "^12.5.1",
     "ffmpeg": "^0.0.4",
-    "ffmpeg-static": "^4.2.7",
     "fluent-ffmpeg": "^2.1.2",
-    "nodemon": "^2.0.6",
     "ytdl-core": "^4.3.1"
   }
 }
