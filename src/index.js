@@ -20,7 +20,7 @@ client.once('ready', () => {
             }
         })
     } else {
-        fs.open('./playlist/' + setting.playlist, 'w', err => { if (err) { console.log(err) } });
+        fs.appendFile('./playlist/' + setting.playlist, 'w', err => { if (err) { console.log(err) } });
     }
 });
 
