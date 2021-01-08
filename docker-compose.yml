@@ -2,6 +2,9 @@ version: "3"
  
 services:
   music-bot:
+    restart: always
     build: .
+    volumes:
+      - ".:/usr/src/app"
     env_file:
       - .env

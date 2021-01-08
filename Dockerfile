@@ -1,4 +1,5 @@
 FROM debian
+WORKDIR /usr/src/app
 RUN apt-get update -y
 RUN apt-get install python curl make g++ ffmpeg -y
 RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
