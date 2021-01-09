@@ -3,6 +3,7 @@ const Music = require('./Music');
 const usage = require('./Setting/usage');
 const setting = require('../config.json');
 const env = require('../env.json');
+const fs = require('fs');
 
 const client = new Discord.Client();
 

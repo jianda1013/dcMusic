@@ -3,6 +3,7 @@ module.exports = {
         if (channel_setting.voiceChannel) {
             channel_setting.voiceChannel.leave();
         }
+        channel_setting.songs = [];
         channel_setting.running = 0;
         return;
     },
