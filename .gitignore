@@ -4,3 +4,4 @@ playlist
 .env
 package-lock.json
 historylog
+env.json

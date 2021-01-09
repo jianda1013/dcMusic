@@ -1,4 +1,5 @@
 const axios = require('axios');
+const env = require('../../env.json');
 
 module.exports = {
     async searchByTitle(title) {
@@ -6,7 +7,7 @@ module.exports = {
             params: {
                 part: "snippet",
                 q: title,
-                key: process.env.GOOGLE_API_KEY,
+                key: env.GOOGLE_API_KEY,
                 maxResults: "1",
                 type: "video"
             }

@@ -1,4 +1,5 @@
 const axios = require('axios');
+const env = require('../../env.json');
 
 module.exports = {
     async searchByList(id, pageToken = null) {
@@ -7,7 +8,7 @@ module.exports = {
             params: {
                 part: "snippet",
                 playlistId: id,
-                key: process.env.GOOGLE_API_KEY,
+                key: env.GOOGLE_API_KEY,
                 pageToken: pageToken,
                 maxResults: "50"
             }

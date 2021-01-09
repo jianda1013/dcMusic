@@ -3,6 +3,7 @@ const Music = require('./Music');
 const usage = require('./Setting/usage');
 const fs = require('fs');
 const setting = require('../config.json');
+const env = require('../env.json');
 
 const client = new Discord.Client();
 
@@ -40,4 +41,4 @@ client.on('message', async message => {
     else if (message.content === '!list') { Music.listMusic(message, setting); }
 });
 
-client.login(process.env.DC_TOKEN);
+client.login(env.DC_TOKEN);
