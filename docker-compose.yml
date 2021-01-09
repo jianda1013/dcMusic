@@ -4,5 +4,3 @@ services:
   music-bot:
     restart: always
     build: .
-    env_file:
-      - .env
