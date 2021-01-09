@@ -2,7 +2,6 @@ const ytdl = require('ytdl-core');
 const playMusic = require('./playMusic');
 const ytst = require('../YouTube/searchTitle');
 const ytsl = require('../YouTube/searchList');
-const fs = require('fs');
 
 module.exports = {
     async add(message, channel_setting) {
@@ -32,22 +31,17 @@ module.exports = {
                 url: songInfo.videoDetails.video_url,
             };
             channel_setting.songs.push(song);
-            fs.appendFile('./playlist/' + channel_setting.playlist, JSON.stringify(song) + '\n', err => { console.log(err) })
         } catch (err) { console.log(err); }
     },
 
     async addMusicTitle(title, channel_setting) {
         const song = await ytst.searchByTitle(title);
         channel_setting.songs.push(song);
-        fs.appendFile('./playlist/' + channel_setting.playlist, JSON.stringify(song) + '\n', err => { console.log(err) })
     },
 
     async addMusicList(list_id, channel_setting) {
         await ytsl.searchByList(list_id)
             .then(result => {
-                for (i in result) {
-                    fs.appendFile('./playlist/' + channel_setting.playlist, JSON.stringify(result[i]) + '\n', err => { if (err) { console.log(err) } })
-                }
                 Array.prototype.push.apply(channel_setting.songs, result);
             })
             .catch(err => { if (err) { console.log(err) } });
