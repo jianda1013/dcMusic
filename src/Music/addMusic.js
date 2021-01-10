@@ -12,12 +12,12 @@ module.exports = {
         if (args.match(regex)) {
             const params = new URLSearchParams(args);
             if (params.has("list")) {
-                this.addMusicList(params.get('list'), channel_setting);
+                await this.addMusicList(params.get('list'), channel_setting);
             } else {
-                this.addMusicURL(args, channel_setting);
+                await this.addMusicURL(args, channel_setting);
             }
         } else {
-            this.addMusicTitle(args, channel_setting);
+            await this.addMusicTitle(args, channel_setting);
         }
         playMusic.play(channel_setting);
         return;

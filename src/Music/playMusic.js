@@ -32,7 +32,7 @@ module.exports = {
                     channel_setting.songs.shift();
                     this.playMusic(channel_setting);
                 })
-                .on('error', error => console.log(error));
+                .on('error', error => console.log(new Date(), error));
             dispatcher.setVolumeLogarithmic(channel_setting.volume / 5);
         }
     },
@@ -56,7 +56,7 @@ module.exports = {
                     channel_setting.playingNow += 1;
                     this.playMusic(channel_setting);
                 })
-                .on('error', error => console.log(error));
+                .on('error', error => console.log(new Date(), error));
             dispatcher.setVolumeLogarithmic(1);
         }
     }
