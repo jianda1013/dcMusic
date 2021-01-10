@@ -8,7 +8,7 @@ module.exports = {
             try {
                 var connection = await channel_setting.voiceChannel.join();
                 channel_setting.connection = connection;
-                this.playMusic(channel_setting);
+                await this.playMusic(channel_setting);
             } catch (err) {
                 channel_setting.running = 0;
                 console.log(err);
@@ -19,7 +19,7 @@ module.exports = {
 
     async playMusic(channel_setting) {
         if (channel_setting.continue) {
-            this.playContinue(channel_setting);
+            await this.playContinue(channel_setting);
             return;
         }
         if (!channel_setting.songs.length || !channel_setting.running) {
@@ -28,9 +28,9 @@ module.exports = {
         } else {
             const dispatcher = channel_setting.connection
                 .play(ytdl(channel_setting.songs[0].url))
-                .on('finish', () => {
+                .on('finish', async() => {
                     channel_setting.songs.shift();
-                    this.playMusic(channel_setting);
+                    await this.playMusic(channel_setting);
                 })
                 .on('error', error => console.log(new Date(), error));
             dispatcher.setVolumeLogarithmic(channel_setting.volume / 5);
@@ -39,7 +39,7 @@ module.exports = {
 
     async playContinue(channel_setting) {
         if (!channel_setting.continue) {
-            this.playMusic(channel_setting);
+            await this.playMusic(channel_setting);
             return;
         }
         if (!channel_setting.songs.length || !channel_setting.running) {
@@ -52,12 +52,12 @@ module.exports = {
             }
             const dispatcher = channel_setting.connection
                 .play(ytdl(channel_setting.songs[channel_setting.playingNow].url))
-                .on('finish', () => {
+                .on('finish', async() => {
                     channel_setting.playingNow += 1;
-                    this.playMusic(channel_setting);
+                    await this.playMusic(channel_setting);
                 })
                 .on('error', error => console.log(new Date(), error));
             dispatcher.setVolumeLogarithmic(1);
         }
-    }
+    },
 }

@@ -7,10 +7,10 @@ const fs = require('fs');
 
 const client = new Discord.Client();
 
-client.once('ready', () => {
+client.once('ready', async() => {
     console.log('Ready!');
-    setting.textChannel = client.channels.cache.find(channel => channel.name === '🟫歌曲推薦');
-    setting.voiceChannel = client.channels.cache.find(channel => channel.name === '🟫DJ放送');
+    setting.textChannel = await client.channels.cache.find(channel => channel.name === '🟫歌曲推薦');
+    setting.voiceChannel = await client.channels.cache.find(channel => channel.name === '🟫DJ放送');
 });
 
 client.on('message', async message => {
@@ -27,6 +27,9 @@ client.on('message', async message => {
     else if (message.content.startsWith('!skip')) { Music.skipMusic(message, setting); }
     else if (message.content === '!stop') { Music.stopMusic(setting); }
     else if (message.content === '!list') { Music.listMusic(message, setting); }
+}, 'error', async error =>{
+    console.log('here comes error')
+    console.log(error);
 });
 
 client.login(env.DC_TOKEN);
