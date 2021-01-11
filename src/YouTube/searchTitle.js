@@ -14,17 +14,7 @@ module.exports = {
         }
         const basic = 'https://www.googleapis.com/youtube/v3/search';
         const url = 'https://www.youtube.com/watch?v=';
-        let result;
-        await axios.get(basic, params)
-            .then(async res => {
-                result = {
-                    title: res.data.items[0].snippet.title,
-                    url: url + res.data.items[0].id.videoId
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        return result;
+        const result = await axios.get(basic, params)
+        return url + result.data.items[0].id.videoId;
     }
 }

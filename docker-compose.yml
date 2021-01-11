@@ -4,3 +4,5 @@ services:
   music-bot:
     restart: always
     build: .
+    volumes:
+      - .:/home

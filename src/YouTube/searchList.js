@@ -18,10 +18,7 @@ module.exports = {
         await axios.get(basic, params)
             .then(async res => {
                 for (let i = 0; i < res.data.items.length; i++) {
-                    result.push({
-                        title: res.data.items[i].snippet.title,
-                        url: url + res.data.items[i].snippet.resourceId.videoId
-                    })
+                    result.push(url + res.data.items[i].snippet.resourceId.videoId)
                 }
                 if (res.data.nextPageToken) {
                     Array.prototype.push.apply(result, await this.searchByList(id, res.data.nextPageToken));
