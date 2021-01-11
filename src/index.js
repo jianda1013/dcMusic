@@ -9,8 +9,8 @@ const client = new Discord.Client();
 
 client.once('ready', async() => {
     console.log('Ready!');
-    setting.textChannel = client.channels.cache.find(channel => channel.name === 'test');
-    setting.voiceChannel = client.channels.cache.find(channel => channel.name === '語音');
+    setting.textChannel = client.channels.cache.find(channel => channel.name === '🟫歌曲推薦');
+    setting.voiceChannel = client.channels.cache.find(channel => channel.name === '🟫DJ放送');
     Music.start(setting);
 });
 

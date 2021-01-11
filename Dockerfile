@@ -6,4 +6,4 @@ RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
 RUN apt-get install -y nodejs
 COPY . .
 RUN npm install
-CMD ["npm", "test"]
+CMD ["npm", "start"]
