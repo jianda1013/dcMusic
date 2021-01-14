@@ -16,15 +16,9 @@ module.exports = {
 
     async play(channel_setting) {
         if (channel_setting.songs) {
-            try {
-                const connection = await channel_setting.voiceChannel.join();
-                channel_setting.connection = connection;
-                await this.playMusic(channel_setting);
-            } catch (err) {
-                channel_setting.running = 0;
-                console.log(err);
-                return;
-            }
+            const connection = await channel_setting.voiceChannel.join();
+            channel_setting.connection = connection;
+            await this.playMusic(channel_setting);
         }
     },
 

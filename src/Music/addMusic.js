@@ -24,14 +24,14 @@ module.exports = {
         try {
             const song = await ytdl.getInfo(url);
             channel_setting.songs.push(song.videoDetails.video_url);
-            fs.appendFileSync('../playlist', song+'\n');
+            fs.appendFileSync('/home/src//playlist', song+'\n');
         } catch (err) { console.log(err); }
     },
 
     async addMusicTitle(title, channel_setting) {
         const song = await ytst.searchByTitle(title);
         channel_setting.songs.push(song);
-        fs.appendFileSync('../playlist', song+'\n');
+        fs.appendFileSync('/home/src//playlist', song+'\n');
     },
 
     async addMusicList(list_id, channel_setting) {
@@ -39,7 +39,7 @@ module.exports = {
             .then(song => {
                 for (i in song) {
                     channel_setting.songs.push(song[i]);
-                    fs.appendFileSync('../playlist', song[i]+'\n');
+                    fs.appendFileSync('/home/src//playlist', song[i]+'\n');
                 }
             })
             .catch(err => { if (err) { console.log(err) } });

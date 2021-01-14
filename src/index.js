@@ -20,7 +20,7 @@ client.on('message', async message => {
     if (message.channel != setting.textChannel) { return; }
     if (!message.content.startsWith('!')) { return; }
 
-    fs.appendFile('./historylog', ((new Date()).toString() + ', ' + message.author.username + ', ' + message.content + '\n'), err => { if (err) { console.log(err); } })
+    fs.appendFile('/home/src//historylog', ((new Date()).toString() + ', ' + message.author.username + ', ' + message.content + '\n'), err => { if (err) { console.log(err); } })
 
     if (message.content === '!help') { usage.instruct(message); }
     if (message.content === '!play') { Music.play(setting); }
